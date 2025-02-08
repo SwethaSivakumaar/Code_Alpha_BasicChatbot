@@ -1,0 +1,20 @@
+import random 
+import nltk
+ from nltk.chat.util import Chat, reflections
+ nltk.download('punkt') 
+pairs = [
+ [r'hi|hello|hey', ['Hello!', 'Hi there!', 'Hey!']] , 
+ [r'how are you?', ['I am doing well, thanks!', 'Could be better, but I am here to help you!']] , 
+ [r'what is your name?', ['I am a chatbot created to assist you.']] ,
+ [r'quit', ['Thank you for talking to me. Goodbye!']] , 
+ [r'(.*)', ['I am not sure how to respond to that.', 'Can you please elaborate?', 'That is interesting!']]
+]
+ chatbot = Chat(pairs, reflections)
+ print("Hello! I am a chatbot. Type 'quit' to exit.")
+ while True:
+     user_input = input('You: ') 
+     if user_input.lower() == 'quit':
+            print('Chatbot: Thank you for chatting!') 
+            break 
+ response = chatbot.respond(user_input)
+ print('Chatbot:', response)
